@@ -1,64 +1,971 @@
 <!doctype html>
 <html lang="hi">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Apna Kisan Mandi</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,Arial,sans-serif;background:#f5f7f5;color:#172018}
-header{background:#176b3a;color:#fff;padding:18px 7%;position:sticky;top:0;z-index:5}.brand{font-size:25px;font-weight:800}.tag{font-size:13px;opacity:.9}
-nav{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}nav button,.btn{border:0;border-radius:10px;padding:10px 14px;font-weight:700;cursor:pointer}.navbtn{background:#fff;color:#176b3a}
-main{max-width:1100px;margin:auto;padding:25px 18px}.page{display:none}.page.active{display:block}.hero{background:#e9f5ec;border-radius:22px;padding:32px;margin-bottom:22px}.hero h1{font-size:36px;margin:0 0 8px}.hero p{margin:0 0 20px;color:#526057}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}.card{background:#fff;border:1px solid #e0e6e0;border-radius:16px;padding:18px;box-shadow:0 2px 10px #00000008}.cropimg{font-size:42px}.price{color:#176b3a;font-weight:800}.muted{color:#68736b;font-size:13px}.title{font-size:25px;font-weight:800;margin:8px 0 18px}
-form{background:#fff;border:1px solid #e0e6e0;border-radius:16px;padding:18px;max-width:650px}label{display:block;font-weight:700;font-size:13px;margin-top:8px}input,select,textarea{width:100%;padding:12px;border:1px solid #d5ddd5;border-radius:10px;margin:6px 0 10px;font:inherit}textarea{min-height:90px}.primary{background:#176b3a;color:#fff}.secondary{background:#eaf3ed;color:#176b3a}.search{padding:13px!important}.notice{display:none;background:#eaf7ed;color:#176b3a;padding:12px;border-radius:10px;margin:12px 0}
-table{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden}th,td{padding:12px;border-bottom:1px solid #e5e9e5;text-align:left}th{background:#eaf3ed}
-footer{text-align:center;padding:30px;color:#6b756d}.back{margin-bottom:12px}
-@media(max-width:600px){.hero h1{font-size:29px}header{padding:16px}.grid{grid-template-columns:1fr 1fr}}
-</style></head>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui,Arial,sans-serif;
+  background:#f5f7f5;
+  color:#172018
+}
+header{
+  background:#176b3a;
+  color:#fff;
+  padding:18px 7%;
+  position:sticky;
+  top:0;
+  z-index:5
+}
+.brand{font-size:25px;font-weight:800}
+.tag{font-size:13px;opacity:.9}
+
+nav{
+  margin-top:12px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap
+}
+nav button,.btn{
+  border:0;
+  border-radius:10px;
+  padding:10px 14px;
+  font-weight:700;
+  cursor:pointer
+}
+.navbtn{background:#fff;color:#176b3a}
+
+main{
+  max-width:1100px;
+  margin:auto;
+  padding:25px 18px
+}
+.page{display:none}
+.page.active{display:block}
+
+.hero{
+  background:#e9f5ec;
+  border-radius:22px;
+  padding:32px;
+  margin-bottom:22px
+}
+.hero h1{
+  font-size:36px;
+  margin:0 0 8px
+}
+.hero p{
+  margin:0 0 20px;
+  color:#526057
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:14px
+}
+.card{
+  background:#fff;
+  border:1px solid #e0e6e0;
+  border-radius:16px;
+  padding:18px;
+  box-shadow:0 2px 10px #00000008
+}
+.cropimg{font-size:42px}
+.price{
+  color:#176b3a;
+  font-weight:800
+}
+.muted{
+  color:#68736b;
+  font-size:13px
+}
+.title{
+  font-size:25px;
+  font-weight:800;
+  margin:8px 0 18px
+}
+
+form{
+  background:#fff;
+  border:1px solid #e0e6e0;
+  border-radius:16px;
+  padding:18px;
+  max-width:650px
+}
+label{
+  display:block;
+  font-weight:700;
+  font-size:13px;
+  margin-top:8px
+}
+input,select,textarea{
+  width:100%;
+  padding:12px;
+  border:1px solid #d5ddd5;
+  border-radius:10px;
+  margin:6px 0 10px;
+  font:inherit
+}
+textarea{min-height:90px}
+
+.primary{
+  background:#176b3a;
+  color:#fff
+}
+.secondary{
+  background:#eaf3ed;
+  color:#176b3a
+}
+.search{padding:13px!important}
+
+.notice{
+  display:none;
+  background:#eaf7ed;
+  color:#176b3a;
+  padding:12px;
+  border-radius:10px;
+  margin:12px 0
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:#fff;
+  border-radius:14px;
+  overflow:hidden
+}
+th,td{
+  padding:12px;
+  border-bottom:1px solid #e5e9e5;
+  text-align:left
+}
+th{background:#eaf3ed}
+
+footer{
+  text-align:center;
+  padding:30px;
+  color:#6b756d
+}
+.back{margin-bottom:12px}
+
+.userbox{
+  display:none;
+  margin-top:10px;
+  background:#eaf7ed;
+  color:#176b3a;
+  padding:10px;
+  border-radius:10px;
+  font-size:14px
+}
+
+@media(max-width:600px){
+  .hero h1{font-size:29px}
+  header{padding:16px}
+  .grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+
 <body>
+
 <header>
-<div class="brand">🌾 Apna Kisan Mandi</div><div class="tag">किसान से सीधे खरीदार तक</div>
+
+<div class="brand">🌾 Apna Kisan Mandi</div>
+<div class="tag">किसान से सीधे खरीदार तक</div>
+
 <nav>
-<button class="navbtn" onclick="show('home')">Home</button><button class="navbtn" onclick="show('market')">मंडी</button>
-<button class="navbtn" onclick="show('sell')">माल बेचें</button><button class="navbtn" onclick="show('login')">Login</button>
+<button class="navbtn" onclick="show('home')">Home</button>
+<button class="navbtn" onclick="show('market')">मंडी</button>
+<button class="navbtn" onclick="show('sell')">माल बेचें</button>
+<button class="navbtn" onclick="show('login')">Login</button>
 <button class="navbtn" onclick="show('admin')">Admin</button>
-</nav></header>
+</nav>
+
+<div id="userBox" class="userbox"></div>
+
+</header>
+
 
 <main>
+
+<!-- HOME -->
+
 <section id="home" class="page active">
-<div class="hero"><h1>किसान का माल, सीधे खरीदार तक 🌱</h1><p>फसल खोजें, भाव देखें और किसान से सीधे संपर्क करें।</p>
-<button class="btn primary" onclick="show('market')">🛒 मंडी देखें</button>
-<button class="btn secondary" onclick="show('sell')">👨‍🌾 माल बेचें</button></div>
-<div class="title">लोकप्रिय फसलें</div><div class="grid">
-<div class="card"><div class="cropimg">🥒</div><b>खीरा</b><div class="price">₹20/kg</div><div class="muted">रांची · 500 kg</div></div>
-<div class="card"><div class="cropimg">🍅</div><b>टमाटर</b><div class="price">₹30/kg</div><div class="muted">रांची · 300 kg</div></div>
-<div class="card"><div class="cropimg">🍉</div><b>तरबूज</b><div class="price">₹12/kg</div><div class="muted">रांची · 1000 kg</div></div>
-<div class="card"><div class="cropimg">🌽</div><b>मक्का</b><div class="price">₹25/kg</div><div class="muted">रांची · 800 kg</div></div></div></section>
 
-<section id="market" class="page"><button class="btn secondary back" onclick="show('home')">← वापस</button><div class="title">🛒 किसान मंडी</div>
-<input class="search" id="find" oninput="filterMarket()" placeholder="🔎 फसल खोजें..."><div class="grid" id="listings">
-<div class="card listing" data-name="खीरा"><div class="cropimg">🥒</div><b>खीरा</b><div class="price">₹20/kg</div><div class="muted">500 kg · 📍 रांची</div><button class="btn primary" onclick="contact('खीरा')">📞 संपर्क करें</button></div>
-<div class="card listing" data-name="टमाटर"><div class="cropimg">🍅</div><b>टमाटर</b><div class="price">₹30/kg</div><div class="muted">300 kg · 📍 रांची</div><button class="btn primary" onclick="contact('टमाटर')">📞 संपर्क करें</button></div>
-<div class="card listing" data-name="तरबूज"><div class="cropimg">🍉</div><b>तरबूज</b><div class="price">₹12/kg</div><div class="muted">1000 kg · 📍 रांची</div><button class="btn primary" onclick="contact('तरबूज')">📞 संपर्क करें</button></div></div></section>
+<div class="hero">
 
-<section id="sell" class="page"><button class="btn secondary back" onclick="show('home')">← वापस</button><div class="title">👨‍🌾 किसान: अपना माल डालें</div>
-<form onsubmit="publish(event)"><label>किसान का नाम</label><input id="farmer" required placeholder="नाम">
-<label>मोबाइल नंबर</label><input id="mobile" required maxlength="10" placeholder="10 अंकों का नंबर">
-<label>फसल</label><select id="crop"><option>खीरा</option><option>टमाटर</option><option>तरबूज</option><option>मक्का</option><option>अन्य</option></select>
-<label>मात्रा (kg)</label><input id="qty" type="number" required placeholder="500"><label>भाव (₹/kg)</label><input id="rate" type="number" required placeholder="20">
-<label>गांव / स्थान</label><input id="place" required placeholder="गांव का नाम"><label>फोटो</label><input id="photo" type="file" accept="image/*">
-<button class="btn primary" style="width:100%" type="submit">📦 माल Publish करें</button><div id="pub" class="notice"></div></form></section>
+<h1>किसान का माल, सीधे खरीदार तक 🌱</h1>
 
-<section id="login" class="page"><button class="btn secondary back" onclick="show('home')">← वापस</button><div class="title">🔐 Login / Registration</div>
-<form onsubmit="login(event)"><label>नाम</label><input id="lname" required><label>मोबाइल</label><input id="lmobile" required maxlength="10"><label>मैं हूँ</label><select id="role"><option>किसान</option><option>खरीदार</option></select><button class="btn primary" style="width:100%" type="submit">OTP भेजें</button><div id="loginmsg" class="notice"></div><p class="muted">Prototype में OTP demo है। असली SMS OTP बाद में जोड़ा जाएगा।</p></form></section>
+<p>
+फसल खोजें, भाव देखें और किसान से सीधे संपर्क करें।
+</p>
 
-<section id="admin" class="page"><button class="btn secondary back" onclick="show('home')">← वापस</button><div class="title">👨‍💼 Admin Dashboard</div><div class="grid">
-<div class="card"><b>👨‍🌾 किसान</b><h2 id="farmers">0</h2></div><div class="card"><b>📦 Listings</b><h2 id="count">3</h2></div><div class="card"><b>🛒 खरीदार</b><h2 id="buyers">0</h2></div><div class="card"><b>💰 Commission</b><h2>₹0</h2></div></div><br>
-<table><tr><th>फसल</th><th>मात्रा</th><th>भाव</th><th>स्थान</th></tr><tbody id="adminRows"><tr><td>खीरा</td><td>500 kg</td><td>₹20</td><td>रांची</td></tr><tr><td>टमाटर</td><td>300 kg</td><td>₹30</td><td>रांची</td></tr></tbody></table></section>
-</main><footer>Apna Kisan Mandi · Prototype V1<br>Domain और hosting बाद में जोड़ सकते हैं।</footer>
+<button class="btn primary" onclick="show('market')">
+🛒 मंडी देखें
+</button>
+
+<button class="btn secondary" onclick="show('sell')">
+👨‍🌾 माल बेचें
+</button>
+
+</div>
+
+
+<div class="title">लोकप्रिय फसलें</div>
+
+<div class="grid">
+
+<div class="card">
+<div class="cropimg">🥒</div>
+<b>खीरा</b>
+<div class="price">₹20/kg</div>
+<div class="muted">रांची · 500 kg</div>
+</div>
+
+<div class="card">
+<div class="cropimg">🍅</div>
+<b>टमाटर</b>
+<div class="price">₹30/kg</div>
+<div class="muted">रांची · 300 kg</div>
+</div>
+
+<div class="card">
+<div class="cropimg">🍉</div>
+<b>तरबूज</b>
+<div class="price">₹12/kg</div>
+<div class="muted">रांची · 1000 kg</div>
+</div>
+
+<div class="card">
+<div class="cropimg">🌽</div>
+<b>मक्का</b>
+<div class="price">₹25/kg</div>
+<div class="muted">रांची · 800 kg</div>
+</div>
+
+</div>
+</section>
+
+
+<!-- MARKET -->
+
+<section id="market" class="page">
+
+<button class="btn secondary back" onclick="show('home')">
+← वापस
+</button>
+
+<div class="title">🛒 किसान मंडी</div>
+
+<input
+class="search"
+id="find"
+oninput="filterMarket()"
+placeholder="🔎 फसल खोजें..."
+>
+
+<div class="grid" id="listings">
+
+<div class="card listing" data-name="खीरा">
+<div class="cropimg">🥒</div>
+<b>खीरा</b>
+<div class="price">₹20/kg</div>
+<div class="muted">500 kg · 📍 रांची</div>
+
+<button class="btn primary" onclick="contact('खीरा')">
+📞 संपर्क करें
+</button>
+
+</div>
+
+
+<div class="card listing" data-name="टमाटर">
+<div class="cropimg">🍅</div>
+<b>टमाटर</b>
+<div class="price">₹30/kg</div>
+<div class="muted">300 kg · 📍 रांची</div>
+
+<button class="btn primary" onclick="contact('टमाटर')">
+📞 संपर्क करें
+</button>
+
+</div>
+
+
+<div class="card listing" data-name="तरबूज">
+<div class="cropimg">🍉</div>
+<b>तरबूज</b>
+<div class="price">₹12/kg</div>
+<div class="muted">1000 kg · 📍 रांची</div>
+
+<button class="btn primary" onclick="contact('तरबूज')">
+📞 संपर्क करें
+</button>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- SELL -->
+
+<section id="sell" class="page">
+
+<button class="btn secondary back" onclick="show('home')">
+← वापस
+</button>
+
+<div class="title">👨‍🌾 किसान: अपना माल डालें</div>
+
+<form onsubmit="publish(event)">
+
+<label>किसान का नाम</label>
+<input id="farmer" required placeholder="नाम">
+
+<label>मोबाइल नंबर</label>
+<input
+id="mobile"
+required
+maxlength="10"
+placeholder="10 अंकों का नंबर"
+>
+
+<label>फसल</label>
+
+<select id="crop">
+<option>खीरा</option>
+<option>टमाटर</option>
+<option>तरबूज</option>
+<option>मक्का</option>
+<option>अन्य</option>
+</select>
+
+<label>मात्रा (kg)</label>
+<input
+id="qty"
+type="number"
+required
+placeholder="500"
+>
+
+<label>भाव (₹/kg)</label>
+<input
+id="rate"
+type="number"
+required
+placeholder="20"
+>
+
+<label>गांव / स्थान</label>
+<input
+id="place"
+required
+placeholder="गांव का नाम"
+>
+
+<label>फोटो</label>
+<input
+id="photo"
+type="file"
+accept="image/*"
+>
+
+<button
+class="btn primary"
+style="width:100%"
+type="submit"
+>
+📦 माल Publish करें
+</button>
+
+<div id="pub" class="notice"></div>
+
+</form>
+
+</section>
+
+
+<!-- LOGIN / REGISTRATION -->
+
+<section id="login" class="page">
+
+<button class="btn secondary back" onclick="show('home')">
+← वापस
+</button>
+
+<div class="title">
+🔐 Login / Registration
+</div>
+
+<form id="authForm">
+
+<label>नाम</label>
+
+<input
+id="authName"
+type="text"
+required
+placeholder="अपना नाम"
+>
+
+
+<label>Email</label>
+
+<input
+id="authEmail"
+type="email"
+required
+placeholder="example@gmail.com"
+>
+
+
+<label>Password</label>
+
+<input
+id="authPassword"
+type="password"
+required
+minlength="6"
+placeholder="कम से कम 6 अक्षर"
+>
+
+
+<label>मैं हूँ</label>
+
+<select id="authRole">
+<option value="किसान">👨‍🌾 किसान</option>
+<option value="खरीदार">🛒 खरीदार</option>
+</select>
+
+
+<button
+class="btn primary"
+type="submit"
+style="width:100%"
+>
+📝 Registration करें
+</button>
+
+
+<button
+class="btn secondary"
+type="button"
+onclick="loginUser()"
+style="width:100%;margin-top:8px"
+>
+🔑 Login करें
+</button>
+
+
+<div id="authMsg" class="notice"></div>
+
+<p class="muted">
+Registration के लिए Email और कम से कम 6 अक्षर का Password जरूरी है।
+</p>
+
+</form>
+
+
+<button
+id="logoutBtn"
+class="btn secondary"
+style="display:none;margin-top:10px"
+onclick="logoutUser()"
+>
+🚪 Logout
+</button>
+
+</section>
+
+
+<!-- ADMIN -->
+
+<section id="admin" class="page">
+
+<button class="btn secondary back" onclick="show('home')">
+← वापस
+</button>
+
+<div class="title">
+👨‍💼 Admin Dashboard
+</div>
+
+<div class="grid">
+
+<div class="card">
+<b>👨‍🌾 किसान</b>
+<h2 id="farmers">0</h2>
+</div>
+
+<div class="card">
+<b>📦 Listings</b>
+<h2 id="count">3</h2>
+</div>
+
+<div class="card">
+<b>🛒 खरीदार</b>
+<h2 id="buyers">0</h2>
+</div>
+
+<div class="card">
+<b>💰 Commission</b>
+<h2>₹0</h2>
+</div>
+
+</div>
+
+<br>
+
+<table>
+
+<tr>
+<th>फसल</th>
+<th>मात्रा</th>
+<th>भाव</th>
+<th>स्थान</th>
+</tr>
+
+<tbody id="adminRows">
+
+<tr>
+<td>खीरा</td>
+<td>500 kg</td>
+<td>₹20</td>
+<td>रांची</td>
+</tr>
+
+<tr>
+<td>टमाटर</td>
+<td>300 kg</td>
+<td>₹30</td>
+<td>रांची</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+
+</main>
+
+
+<footer>
+Apna Kisan Mandi · Step 1<br>
+किसान से सीधे खरीदार तक 🌾
+</footer>
+
+
+<!-- BASIC WEBSITE SCRIPT -->
 
 <script>
-function show(id){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');scrollTo(0,0)}
-function filterMarket(){let q=document.getElementById('find').value.toLowerCase();document.querySelectorAll('.listing').forEach(x=>x.style.display=x.dataset.name.toLowerCase().includes(q)?'block':'none')}
-function contact(c){alert(c+' के किसान से संपर्क। असली मोबाइल/WhatsApp नंबर backend जोड़ने के बाद खुलेगा।')}
-function login(e){e.preventDefault();let p=document.getElementById('lmobile').value;if(!/^\\d{10}$/.test(p)){alert('10 अंकों का मोबाइल नंबर डालें।');return}document.getElementById('loginmsg').style.display='block';document.getElementById('loginmsg').textContent='✅ Demo Login सफल। असली OTP service बाद में जोड़ी जाएगी।';if(document.getElementById('role').value==='किसान')document.getElementById('farmers').textContent='1';else document.getElementById('buyers').textContent='1'}
-function publish(e){e.preventDefault();let p=document.getElementById('mobile').value;if(!/^\\d{10}$/.test(p)){alert('10 अंकों का मोबाइल नंबर डालें।');return}document.getElementById('pub').style.display='block';document.getElementById('pub').textContent='✅ '+crop.value+' का '+qty.value+' kg माल ₹'+rate.value+'/kg पर Publish हो गया।';document.getElementById('count').textContent='4';}
-</script></body></html>
+
+function show(id){
+
+document
+.querySelectorAll('.page')
+.forEach(x=>x.classList.remove('active'));
+
+document
+.getElementById(id)
+.classList.add('active');
+
+scrollTo(0,0);
+
+}
+
+
+function filterMarket(){
+
+let q =
+document
+.getElementById('find')
+.value
+.toLowerCase();
+
+document
+.querySelectorAll('.listing')
+.forEach(x=>{
+
+x.style.display =
+x.dataset.name
+.toLowerCase()
+.includes(q)
+? 'block'
+: 'none';
+
+});
+
+}
+
+
+function contact(c){
+
+alert(
+c +
+' के किसान से संपर्क का Call/WhatsApp सिस्टम अगले Step में जोड़ा जाएगा।'
+);
+
+}
+
+
+function publish(e){
+
+e.preventDefault();
+
+let p =
+document.getElementById('mobile').value;
+
+if(!/^\d{10}$/.test(p)){
+
+alert('10 अंकों का मोबाइल नंबर डालें।');
+
+return;
+
+}
+
+document
+.getElementById('pub')
+.style.display='block';
+
+document
+.getElementById('pub')
+.textContent =
+'✅ ' +
+document.getElementById('crop').value +
+' का ' +
+document.getElementById('qty').value +
+' kg माल ₹' +
+document.getElementById('rate').value +
+'/kg पर Publish हो गया।';
+
+document
+.getElementById('count')
+.textContent='4';
+
+}
+
+</script>
+
+
+<!-- FIREBASE AUTHENTICATION -->
+
+<script type="module">
+
+import {
+initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+
+
+import {
+getAuth,
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword,
+updateProfile,
+signOut,
+onAuthStateChanged
+}
+from
+"https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+
+const firebaseConfig = {
+
+apiKey:
+"AIzaSyDWLmUcKHpmiI1Lwu94Sm5IVdD5s658Sqg",
+
+authDomain:
+"apna-kisan-mandi-7be53.firebaseapp.com",
+
+projectId:
+"apna-kisan-mandi-7be53",
+
+storageBucket:
+"apna-kisan-mandi-7be53.firebasestorage.app",
+
+messagingSenderId:
+"375425239179",
+
+appId:
+"1:375425239179:web:68be63a7650a6c8e",
+
+measurementId:
+"G-ST2JXSQH80"
+
+};
+
+
+const app =
+initializeApp(firebaseConfig);
+
+const auth =
+getAuth(app);
+
+
+const form =
+document.getElementById("authForm");
+
+const msg =
+document.getElementById("authMsg");
+
+const logoutBtn =
+document.getElementById("logoutBtn");
+
+const userBox =
+document.getElementById("userBox");
+
+
+function showMessage(text,success=true){
+
+msg.style.display="block";
+
+msg.textContent=text;
+
+if(success){
+
+msg.style.background="#eaf7ed";
+msg.style.color="#176b3a";
+
+}else{
+
+msg.style.background="#ffeaea";
+msg.style.color="#b00020";
+
+}
+
+}
+
+
+/* REGISTRATION */
+
+form.addEventListener("submit",async(e)=>{
+
+e.preventDefault();
+
+const name =
+document
+.getElementById("authName")
+.value
+.trim();
+
+const email =
+document
+.getElementById("authEmail")
+.value
+.trim();
+
+const password =
+document
+.getElementById("authPassword")
+.value;
+
+if(!name){
+
+showMessage(
+"कृपया अपना नाम डालें।",
+false
+);
+
+return;
+
+}
+
+
+try{
+
+const userCredential =
+await createUserWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+
+await updateProfile(
+userCredential.user,
+{
+displayName:name
+}
+);
+
+
+showMessage(
+"✅ Registration सफल! आपका Account बन गया।"
+);
+
+form.reset();
+
+}
+catch(error){
+
+console.log(error);
+
+if(
+error.code ===
+"auth/email-already-in-use"
+){
+
+showMessage(
+"यह Email पहले से Registered है। Login करें।",
+false
+);
+
+}
+
+else if(
+error.code ===
+"auth/weak-password"
+){
+
+showMessage(
+"Password कम से कम 6 अक्षर का रखें।",
+false
+);
+
+}
+
+else if(
+error.code ===
+"auth/invalid-email"
+){
+
+showMessage(
+"Email सही नहीं है।",
+false
+);
+
+}
+
+else{
+
+showMessage(
+"Registration में समस्या हुई।",
+false
+);
+
+}
+
+}
+
+});
+
+
+/* LOGIN */
+
+window.loginUser =
+async function(){
+
+const email =
+document
+.getElementById("authEmail")
+.value
+.trim();
+
+const password =
+document
+.getElementById("authPassword")
+.value;
+
+
+if(!email || !password){
+
+showMessage(
+"Email और Password डालें।",
+false
+);
+
+return;
+
+}
+
+
+try{
+
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+showMessage(
+"✅ Login सफल!"
+);
+
+}
+catch(error){
+
+console.log(error);
+
+showMessage(
+"❌ Email या Password गलत है।",
+false
+);
+
+}
+
+};
+
+
+/* LOGOUT */
+
+window.logoutUser =
+async function(){
+
+try{
+
+await signOut(auth);
+
+showMessage(
+"आप Logout हो गए हैं।"
+);
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+};
+
+
+/* USER LOGIN STATUS */
+
+onAuthStateChanged(
+auth,
+(user)=>{
+
+if(user){
+
+logoutBtn.style.display="block";
+
+userBox.style.display="block";
+
+userBox.innerHTML =
+"👤 Login: <b>" +
+(user.displayName || user.email) +
+"</b>";
+
+}
+else{
+
+logoutBtn.style.display="none";
+
+userBox.style.display="none";
+
+}
+
+}
+);
+
+</script>
+
+</body>
+</html>
